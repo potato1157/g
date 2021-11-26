@@ -1,0 +1,41 @@
+//杨辉三角
+//1           
+//11
+//121
+//1331
+//14641
+#include<stdio.h>
+#define ROW 10
+#define COL 10
+
+int main()
+{
+	int arr[ROW][COL] = { 0 };
+	int i, j;
+	for (i = 0; i < ROW; i++)
+	{
+		arr[i][0] = 1;
+		for (j = 1; j < i; j++)
+		{
+			arr[i][j] = 0;
+		}
+		arr[i][j] = 1;
+	}
+	for (i = 1; i < ROW; i++)
+	{
+		for (j = 1; j < i; j++)
+		{
+			arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j];
+		}
+	}
+	//打印
+	for (i = 0; i < ROW; i++)
+	{
+		for (j = 0; j <= i; j++)
+		{
+			printf("%d ", arr[i][j]);
+		}
+		printf("\n");
+	}
+	return 0;
+}
